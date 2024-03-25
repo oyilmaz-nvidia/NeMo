@@ -250,7 +250,7 @@ class GPTFIMDataset(GPTDataset):
         no_fim_prefix=None,
     ):
         """
-        Take in a sample (np array w/ size (0,chunklength)) and perform a FIM transformation on it. 
+        Take in a sample (np array w/ size (0,chunklength)) and perform a FIM transformation on it.
         Maintain the same sample length (if transform creates a few extra tokens, drop them).
         """
         if np_rng.binomial(1, fim_rate):  # sample bernoulli dist
