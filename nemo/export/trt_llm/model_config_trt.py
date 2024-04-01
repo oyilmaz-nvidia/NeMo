@@ -19,6 +19,7 @@ from typing import List, Union
 
 import psutil
 
+
 from nemo.export.trt_llm.model_config import ModelConfig
 from nemo.export.trt_llm.tensorrt_llm_model import LMHeadModelBuilder
 

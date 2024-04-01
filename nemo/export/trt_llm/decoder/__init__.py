@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""LLM Decoder implementation for tensorrt_llm conversion."""
 from typing import Dict, Type
 
 import tensorrt as trt

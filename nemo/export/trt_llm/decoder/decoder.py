@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""The parent decoder class implementation for model_config and tensorrt_llm conversion."""
 
 from abc import ABC, abstractmethod
 from typing import Optional

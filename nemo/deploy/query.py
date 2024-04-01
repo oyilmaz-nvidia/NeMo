@@ -17,7 +17,6 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 from nemo.deploy.utils import str_list2numpy
-
 use_pytriton = True
 try:
     from pytriton.client import DecoupledModelClient, ModelClient

@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 import functools
 import logging
 import os
@@ -24,6 +25,7 @@ import yaml
 from transformers import FalconConfig, GPT2Config, LlamaConfig
 
 from nemo.export.trt_llm.nemo.convert import cpu_map_location, gpu_map_location
+
 
 LOGGER = logging.getLogger("NeMo")
 

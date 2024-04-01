@@ -26,6 +26,7 @@ from transformers.models.llama.modeling_llama import LlamaRMSNorm
 
 from nemo.export.trt_llm.tensor_utils import get_tensor_from_dict, split, torch_to_numpy_with_dtype
 
+
 DECODER_GPT2 = "gpt2"
 DECODER_GPTJ = "gptj"
 DECODER_LLAMA = "llama"
