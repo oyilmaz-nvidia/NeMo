@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .deploy_base import DeployBase
-from .deploy_pytriton import DeployPyTriton
+from nemo.deploy.deploy_base import DeployBase
+from nemo.deploy.deploy_pytriton import DeployPyTriton
 
 try:
-    from .query import NemoQuery
+    from nemo.deploy.query import NemoQuery
 except:
     pass
-from .triton_deployable import ITritonDeployable
+from nemo.deploy.triton_deployable import ITritonDeployable

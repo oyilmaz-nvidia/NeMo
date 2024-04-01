@@ -19,8 +19,8 @@ from typing import List, Union
 
 import psutil
 
-from .model_config import ModelConfig
-from .tensorrt_llm_model import LMHeadModelBuilder
+from nemo.export.trt_llm.model_config import ModelConfig
+from nemo.export.trt_llm.tensorrt_llm_model import LMHeadModelBuilder
 
 
 def model_config_to_tensorrt_llm(

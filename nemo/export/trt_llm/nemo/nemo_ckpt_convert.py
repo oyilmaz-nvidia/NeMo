@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Referrence impl in tensorrt_llm: examples/gpt/nemo_ckpt_convert.py."""
 
 import configparser
 import logging
@@ -32,9 +31,9 @@ from tensorrt_llm._utils import np_bfloat16, str_dtype_to_torch, torch_to_numpy
 from tqdm import tqdm
 from transformers import AutoTokenizer, GPT2Tokenizer, LlamaConfig
 
-from .convert import save_weight_torch, split_and_save_weight
-from .nemo import UnpackedNemoCheckpointDir, extract_layers_with_prefix, nemo_to_llm_config
-from .sentencepiece_tokenizer import SentencePieceTokenizer
+from nemo.export.trt_llm.nemo.convert import save_weight_torch, split_and_save_weight
+from nemo.export.trt_llm.nemo.nemo import UnpackedNemoCheckpointDir, extract_layers_with_prefix, nemo_to_llm_config
+from nemo.export.trt_llm.nemo.sentencepiece_tokenizer import SentencePieceTokenizer
 
 LOGGER = logging.getLogger("NeMo")
 

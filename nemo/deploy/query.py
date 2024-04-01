@@ -16,7 +16,7 @@ from abc import ABC, abstractmethod
 
 import numpy as np
 
-from .utils import str_list2numpy
+from nemo.deploy.utils import str_list2numpy
 
 use_pytriton = True
 try:

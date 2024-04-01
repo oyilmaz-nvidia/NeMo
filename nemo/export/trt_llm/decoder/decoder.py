@@ -20,9 +20,15 @@ from typing import Optional
 import tensorrt as trt
 from transformers.activations import ACT2FN
 
-from ..model_config import QUANTIZATION_NONE, AttentionConfig, DecoderLayerConfig, LayernormConfig, MLPConfig
-from ..quantization_utils import quantize_linear
-from ..tensor_utils import get_tensor_parallel_group
+from nemo.export.trt_llm.model_config import (
+    QUANTIZATION_NONE,
+    AttentionConfig,
+    DecoderLayerConfig,
+    LayernormConfig,
+    MLPConfig,
+)
+from nemo.export.trt_llm.quantization_utils import quantize_linear
+from nemo.export.trt_llm.tensor_utils import get_tensor_parallel_group
 
 
 def _get_hidden_act(act_func):

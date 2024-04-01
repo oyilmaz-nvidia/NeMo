@@ -12,10 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Defines the tensorrt_llm inference API that can support both single and multiple GPU LLM inferences.
-
-Referrence impl in tensorrt_llm: examples/llama/summarize.py.
-"""
 
 import json
 import logging
@@ -32,13 +28,10 @@ from tensorrt_llm.quantization import QuantMode
 from tensorrt_llm.runtime import LoraManager, ModelConfig, SamplingConfig
 from transformers import PreTrainedTokenizer
 
-from .tensor_utils import get_tensor_parallel_group
-from .tensorrt_llm_model import LMHeadModelBuilder
-
-from .tensorrt_llm_build import get_engine_name, MODEL_NAME, refit_runtime_engine  # isort:skip
-
-
-from .nemo_utils import to_word_list_format  # isort:skip
+from nemo.export.trt_llm.tensor_utils import get_tensor_parallel_group
+from nemo.export.trt_llm.tensorrt_llm_model import LMHeadModelBuilder
+from nemo.export.trt_llm.tensorrt_llm_build import get_engine_name, MODEL_NAME, refit_runtime_engine  # isort:skip
+from nemo.export.trt_llm.nemo_utils import to_word_list_format  # isort:skip
 
 LOGGER = logging.getLogger("NeMo")
 

@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""LLM deployment package with tensorrt_llm."""
-
 from mpi4py import MPI
 
 # Pre load MPI libs to avoid tensorrt_llm importing failures.

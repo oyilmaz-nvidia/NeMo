@@ -12,10 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""This module builds the tensorrt_llm engine.
-
-Referrence impl in tensorrt_llm: examples/gpt/build.py.
-"""
 
 import argparse
 import os

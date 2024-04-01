@@ -18,7 +18,7 @@ try:
     from pytriton.triton import Triton, TritonConfig
 except:
     pass
-from .deploy_base import DeployBase
+from nemo.deploy.deploy_base import DeployBase
 
 
 class DeployPyTriton(DeployBase):
