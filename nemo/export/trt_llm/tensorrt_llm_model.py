@@ -203,7 +203,6 @@ class LMHeadModelBuilder(ModelBuilder, GenerationMixin):
         """Initializes the LMHeadModelBuilder from a model_config."""
         super().__init__(model_config)
 
-        # TODO: Add support for share_embedding_table
         share_embedding_table = False
         share_weight = None
         if share_embedding_table:
@@ -343,7 +342,6 @@ class LMHeadModelBuilder(ModelBuilder, GenerationMixin):
             use_custom_all_reduce=use_custom_all_reduce,
         )
 
-        # todo: we should remove this, but hesitant since no explicit argument names below.
         inflight_batching_args = None
 
         return (

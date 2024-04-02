@@ -346,7 +346,7 @@ def load_refit(
     assert tensorrt_llm.mpi_world_size() == torch.distributed.get_world_size(), "MPI world size mismatch"
     runtime_mapping = tensorrt_llm.Mapping(
         world_size=tensorrt_llm.mpi_world_size(), rank=runtime_rank, tp_size=tensorrt_llm.mpi_world_size(), pp_size=1,
-    )  # TODO: Support pipeline parallel
+    )
 
     engine_name = get_engine_name(
         MODEL_NAME, dtype, tensor_parallel_size, pipeline_parallel_size, tensorrt_llm.mpi_rank()

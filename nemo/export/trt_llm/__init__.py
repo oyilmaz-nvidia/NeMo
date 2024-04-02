@@ -13,16 +13,8 @@
 # limitations under the License.
 
 
+import tensorrt_llm
 from mpi4py import MPI
-
-try:
-    import tensorrt_llm
-except Exception as e:
-    print(
-        "tensorrt_llm package is not installed. Please build or install tensorrt_llm package"
-        " properly before calling the llm deployment API."
-    )
-    raise (e)
 
 from nemo.export.trt_llm.model_config_trt import *  # noqa
 from nemo.export.trt_llm.nemo_utils import *  # noqa

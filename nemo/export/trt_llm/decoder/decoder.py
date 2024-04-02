@@ -223,7 +223,6 @@ class DecoderLayerBuilder(ABC):
 
         if is_moe:
             self.decoder.mlp.router.weight.value = layer.mlp.router.weight
-            # TODO: bias
             self.decoder.mlp.experts_weight_1.value = layer.mlp.fc1.weight
             self.decoder.mlp.experts_weight_2.value = layer.mlp.fc2.weight
 

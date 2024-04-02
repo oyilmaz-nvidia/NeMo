@@ -49,7 +49,7 @@ from .tensor_utils import get_tensor_from_dict, get_tensor_parallel_group, split
 LOGGER = logging.getLogger("NeMo")
 
 
-def _nemo_decode(
+def _nemo_llm_decode(
     in_file: str,
     out_dir: str,
     tensor_parallelism: int = 1,
@@ -133,7 +133,7 @@ def nemo_llm_to_model_config(
     """Converts the NEMO file and construct the `ModelConfig` before tensorrt_llm deployment."""
     dtype_str = dtype
 
-    weights_dict, llm_model_config, tokenizer = _nemo_decode(
+    weights_dict, llm_model_config, tokenizer = _nemo_llm_decode(
         in_file=in_file,
         out_dir=nemo_export_dir,
         tensor_parallelism=tensor_parallel_size,
@@ -253,7 +253,7 @@ def to_word_list_format(word_dict: List[List[str]], tokenizer=None):
     return np.array([flat_ids, offsets], dtype="int32").transpose((1, 0, 2))
 
 
-def nemo_model_to_model_config(
+def nemo_llm_model_to_model_config(
     nemo_model: str, decoder_type: str, nemo_model_config: str, dtype_str: str = "float32",
 ) -> Tuple[List[ModelConfig], PreTrainedTokenizer]:
     """Converts the NEMO model object and construct the `ModelConfig` before tensorrt_llm deployment."""
