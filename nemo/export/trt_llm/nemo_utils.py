@@ -121,7 +121,7 @@ def get_tokenzier(tokenizer_dir_or_path: Path) -> PreTrainedTokenizer:
     return build_tokenizer(tokenizer_config)
 
 
-def nemo_to_model_config(
+def nemo_llm_to_model_config(
     in_file: str,
     decoder_type: str,
     nemo_export_dir: typing.Union[str, Path],

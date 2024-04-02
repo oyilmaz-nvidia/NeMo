@@ -17,6 +17,7 @@ from abc import ABC, abstractmethod
 import numpy as np
 
 from nemo.deploy.utils import str_list2numpy
+
 use_pytriton = True
 try:
     from pytriton.client import DecoupledModelClient, ModelClient
@@ -24,7 +25,7 @@ except:
     use_pytriton = False
 
 
-class NemoQueryBase(ABC):
+class NemoQueryLLMBase(ABC):
     def __init__(self, url, model_name):
         self.url = url
         self.model_name = model_name
@@ -48,14 +49,14 @@ class NemoQueryBase(ABC):
         pass
 
 
-class NemoQuery(NemoQueryBase):
+class NemoQueryLLM(NemoQueryLLMBase):
     """
     Sends a query to Triton for LLM inference
 
     Example:
-        from nemo.deploy import NemoQuery
+        from nemo.deploy import NemoQueryLLM
 
-        nq = NemoQuery(url="localhost", model_name="GPT-2B")
+        nq = NemoQueryLLM(url="localhost", model_name="GPT-2B")
 
         prompts = ["hello, testing GPT inference", "another GPT inference test?"]
         output = nq.query_llm(

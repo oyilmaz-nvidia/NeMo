@@ -100,7 +100,6 @@ def add_special_tokens_to_tokenizer(tokenizer):
         tokenizer.add_special_tokens({"eos_token": "</s>"})
 
 
-# TODO: remove tar.extractall usage before releasing with KitMaker
 def unpack_nemo_ckpt(
     nemo_archive_path: typing.Union[str, pathlib.Path], out_dir_path: typing.Union[str, pathlib.Path],
 ):

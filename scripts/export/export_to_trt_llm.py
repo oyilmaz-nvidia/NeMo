@@ -18,7 +18,7 @@ import os
 import sys
 from pathlib import Path
 
-from nemo.deploy import DeployPyTriton, NemoQuery
+from nemo.deploy import DeployPyTriton
 from nemo.export import TensorRTLLM
 
 try:

@@ -15,10 +15,6 @@
 
 from mpi4py import MPI
 
-# Pre load MPI libs to avoid tensorrt_llm importing failures.
-print(f"Loaded mpi lib {MPI.__file__} successfully")
-
-# Pre import tensorrt_llm
 try:
     import tensorrt_llm
 except Exception as e:
@@ -28,7 +24,7 @@ except Exception as e:
     )
     raise (e)
 
-from .model_config_trt import *  # noqa
-from .nemo_utils import *  # noqa
-from .quantization_utils import *  # noqa
-from .tensorrt_llm_run import *  # noqa
+from nemo.export.trt_llm.model_config_trt import *  # noqa
+from nemo.export.trt_llm.nemo_utils import *  # noqa
+from nemo.export.trt_llm.quantization_utils import *  # noqa
+from nemo.export.trt_llm.tensorrt_llm_run import *  # noqa

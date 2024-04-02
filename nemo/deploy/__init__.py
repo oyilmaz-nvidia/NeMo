@@ -17,8 +17,7 @@ from nemo.deploy.deploy_base import DeployBase
 from nemo.deploy.deploy_pytriton import DeployPyTriton
 
 try:
-    from nemo.deploy.query import NemoQuery
+    from nemo.deploy.query_llm import NemoQueryLLM
 except:
     pass
 from nemo.deploy.triton_deployable import ITritonDeployable
-
