@@ -15,4 +15,5 @@
 
 from nemo.deploy.deploy_base import DeployBase
 from nemo.deploy.deploy_pytriton import DeployPyTriton
+from nemo.deploy.deploy_tensorrt_llm import DeployTensorRTLLM
 from nemo.deploy.triton_deployable import ITritonDeployable
