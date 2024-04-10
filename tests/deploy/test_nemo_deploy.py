@@ -194,6 +194,14 @@ def run_trt_llm_export(model_name, n_gpu, skip_accuracy=False, use_pytriton=True
         shutil.rmtree(model_info["trt_llm_model_dir"])
 
 
+
+def test_NV_GPT_8B_Base_4k_1gpu_ifb(n_gpus):
+    """Here we test the trt-llm transfer and infer function with IFB and c++ backend"""
+    if n_gpus > torch.cuda.device_count():
+        pytest.skip("Skipping the test due to not enough number of GPUs", allow_module_level=True)
+
+    run_trt_llm_export("NV-GPT-8B-Base-4k", n_gpus, use_pytriton=False, skip_accuracy=False)
+
 def test_NV_GPT_8B_Base_4k_1gpu(n_gpus):
     """Here we test the trt-llm transfer and infer function"""
 
@@ -292,4 +300,4 @@ def test_GPT_2B_001_bf16_tp1_1gpu(n_gpus):
 
 
 if __name__ == '__main__':
-    test_LLAMA2_7B_base_1gpu_ifb(1)
+    test_NV_GPT_8B_Base_4k_1gpu_ifb(2)
