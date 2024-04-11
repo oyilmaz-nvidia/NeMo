@@ -299,5 +299,12 @@ def test_GPT_2B_001_bf16_tp1_1gpu(n_gpus):
     run_trt_llm_export("GPT-2B-001-bf16-tp1", n_gpus, skip_accuracy=True)
 
 
+def test_FALCON_7B_base_1gpu_ifb(n_gpus):
+    """Here we test the trt-llm transfer and infer function with IFB and c++ backend"""
+    if n_gpus > torch.cuda.device_count():
+        pytest.skip("Skipping the test due to not enough number of GPUs", allow_module_level=True)
+
+    run_trt_llm_export("FALCON-7B-base", n_gpus, use_pytriton=False, skip_accuracy=False)
+
 if __name__ == '__main__':
-    test_NV_GPT_8B_Base_4k_1gpu_ifb(2)
+    test_FALCON_7B_base_1gpu_ifb(1)
