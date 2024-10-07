@@ -190,7 +190,7 @@ def _load(
             )
 
         sampling_config = SamplingConfig(
-            end_id=tokenizer.eos_token_id, pad_id=tokenizer.eos_token_id, num_beams=num_beams
+            end_id=tokenizer.eos, pad_id=tokenizer.eos, num_beams=num_beams
         )
 
         # Initialize the global context so it can be used during `run` API.
@@ -588,7 +588,8 @@ def prepare_input_tensors(
     else:
         bos_tokens = []
 
-    input_tokens = [bos_tokens + tokenizer.encode(t) for t in input_texts]
+    # input_tokens = [bos_tokens + tokenizer.encode(t) for t in input_texts]
+    input_tokens = [bos_tokens + tokenizer.text_to_tokens(t) for t in input_texts]
 
     # If p-tuning is used, we need to prepend vtokens to each input.
     if prompt_table is not None:

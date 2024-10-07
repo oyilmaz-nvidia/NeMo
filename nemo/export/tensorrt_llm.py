@@ -286,6 +286,7 @@ class TensorRTLLM(ITritonDeployable):
         if tensorrt_llm.mpi_rank() == 0:
             tmp_dir = tempfile.TemporaryDirectory()
             nemo_export_dir = Path(tmp_dir.name)
+            nemo_ckpt_version = "nemo 1.0"
 
             if is_qnemo_checkpoint(nemo_checkpoint_path):
                 if os.path.isdir(nemo_checkpoint_path):
@@ -333,6 +334,8 @@ class TensorRTLLM(ITritonDeployable):
                     model_type = "llama"
 
                 model, model_configs, self.tokenizer = load_nemo_model(nemo_checkpoint_path, nemo_export_dir)
+                nemo_ckpt_version = model_configs.get('checkpoint_version', 'nemo 1.0')
+
                 weights_dicts, model_configs = model_to_trtllm_ckpt(
                     model=model,
                     nemo_model_config=model_configs,
@@ -373,11 +376,18 @@ class TensorRTLLM(ITritonDeployable):
                         gemm_plugin=gemm_plugin,
                     )
 
-            tokenizer_path = os.path.join(nemo_export_dir, "tokenizer.model")
-            if os.path.exists(tokenizer_path):
-                shutil.copy(tokenizer_path, self.model_dir)
+            if nemo_ckpt_version == "nemo 1.0":
+                tokenizer_path = os.path.join(nemo_export_dir, "tokenizer.model")
+                if os.path.exists(tokenizer_path):
+                    shutil.copy(tokenizer_path, self.model_dir)
+                else:
+                    self.tokenizer.save_pretrained(os.path.join(self.model_dir, 'huggingface_tokenizer'))
+            elif nemo_ckpt_version == "nemo 2.0":
+                context_path = Path(self.model_dir) / "context"
+                if (Path(nemo_export_dir) / "context").exists():
+                    shutil.copytree(Path(nemo_export_dir) / "context", context_path)
             else:
-                self.tokenizer.save_pretrained(os.path.join(self.model_dir, 'huggingface_tokenizer'))
+                raise Exception("Not a supported NeMo file format.")
 
             nemo_model_config = os.path.join(nemo_export_dir, "model_config.yaml")
             if os.path.exists(nemo_model_config):
